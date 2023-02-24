@@ -1,0 +1,50 @@
+Name: Vishwa Venkateshwaran
+
+I certify that I completed all of the work myself with no aid from anyone aside from the instructor or the undergraduate graders.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Part 1:
+
+Q1: I chose to implement a stack. I chose a stack because I thought it'd be easy to manage a stack since we add and remove from the top as opposed to the queue where we add to the back and remove from the front.
+
+Q2: 
+Linked List: One advantage of linked list is that they don't require a specified fixed size. We can keep adding nodes to the list (at least until we run out of memory). It's also easy to add and remove elements since we just have pointers, pointing to nodes. One disadvantage of linked list is the memory it consumes. It requires a lot of overhead because of the structures, nodes and the various pointers. 
+Arrays: One advantage is that they require less memory per element so less overhead. A disadvantage of arrays is that they need to be specified with a size. This size is fixed so if the array gets full we have to create a new array and copy the elements over. This causes a lot of overhead and extra runtime.
+
+Q3: Prior to testing, I believe the array implementation will be faster because we're not inserting elements in the middle, we're only inserting at the end so we should have a really quick insertion time. We're also just using an index to keep track of the "front" of the stack (which is the front of the array). We're just moving the index over when we pop an element. With linked lists, I have to constantly shift and change pointers so that might add some extra time.
+
+Q4: Void pointers were used so we could cast it to either Stack1 or Stack2.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Part 2: (The timings in this part are only from test 1, not test 2) 
+
+Q1: The CPU time that we calculate might not be completely correct because different computers and operation systems keep track of CPU time differently. So, what the time might be on my laptop might not be the same as the time on the grader's laptop.
+
+Q2: Change to a computer/laptop with a more powerful CPU.
+
+Q3: No, I don't believe it's a good performance measurement because the time returned is dependent on a computer's CPU. If a computer has a weak CPU, the program will take longer even if the code is efficient.
+
+Q4: The array implementation was faster. With 100 million elements as the input size, it took 7.62 seconds for linked list implementation to complete and 4.26 seconds for the array implementation to complete. Given around a 3.36 seconds of faster runtime, I'd say the runtime makes a difference since all we're doing with the 100 milion elements is adding them to the stack and removing them. Every second matters so 3 seconds is definitely a stark difference in runtime.
+
+Q5: The execution times decreased. It went from 7.62 seconds to 6.31 seconds for the linked list implementation and went from 4.26 seconds to 2.40 seconds for the array implementation. The -O is the flag for optimizing code size and execution time. It's why I had faster execution times when I ran with the -O flag.
+
+Q6: The execution times decreased even further. It went from 7.62 seconds to 6.11 seconds for the linked list implementation and went from 4.26 seconds to 2.06 seconds for the array implementation. The -O3 flag optimizes the code even more for a reduction in code size and execution time. It's why I had even faster execution times.
+
+Q7: The file sizes from Q5 and Q6 are the same. Whereas there's a difference in file size when compared to Q4. Q4 has a greater file than size than Q6. We should've expected the file size from Q4 to be greater because we were using the -g flag which asks the compiler to generate debugging information which adds to the file size. Both -O and -O3 are code size and runtime optimization flags and will optimize my code for smallest code size which is why the files created when I used those flags were smaller in size. 
+
+Q8: Since -O and -O3 are both optimization flags, when we use them, the compiler will try to optimize the code to improve the performance speed of the program which ends up increasing the compile time.
+
+Q9: We have so many different levels of optimization because optimization has its costs. It extracts a toll of making the code harder to debug and an increased compilation time. As we increase the optimization, there's a greater cost associated with debugging and compilation time. We don't always need the most optimized code, but sometimes we might. We could settle for one of the lower ended optimization flags that increases execution time but not at too much of a cost associated with debugging and compilation time. We have the various flags because they represent different levels with different costs and we only need to use the one that we think is the most worth and that isn't always the highest ended optimization flag.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Part 3:
+
+Q1: One weird thing I spotted was my code spent the longest in the PushS2 function though the array implementation has always had a faster execution time. I believe this is happening because I'm paying a very steep price whenever I double or half the table size though I'm not doing it often while I'm consistently paying a small price everytime I add or remove a new node with the pointers and malloc and free. This creates an asymptotic difference in how long the execution spends in each function and profiling doesn't account for this.
+
+Q2: The most amount of time was spent in the PushS2 function followed by the ChangeArraySize function followed by the PushS1 function followed by the PopS1 function which is finally followed by the PopS2 function.
+
+Q3: No, I don't think I can.
+
+Q4: I do believe it suffers from shortcomings. Though Stack2 in total took less time to execute than Stack1, the code spent most of the time in Stack2's PushS2 function which is odd. This is because we're paying a very steep price whenever we double or half the table size though I'm not doing it often while we're consistently paying a small price everytime I add or remove a new node with the pointers and malloc and free. This creates an asymptotic difference in how long the execution spends in each function and profiling doesn't account for this.
+
+Q5: The gprof -l could be useful. It's used for line by line profiling. If you have a really long function and would like to know which line takes the most amount of time within that function or pick lines that you could possible optimize to reduce runtime, this gprof flag will be very useful.
+
